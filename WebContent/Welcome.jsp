@@ -1,18 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page errorPage="error.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <META http-equiv="refresh" URL="Login.jsp">
-<title>Insert title here</title>
+<title>Welcome!</title>
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="style1.css">
 </head>
 <body>
 
     <!-- Page Content -->
-<div class="container">
+<div class="wrapper" style="background-image: url('images/bg-registration-form-2.jpg');">
       <div class="row">
       <%
       	if(session.getAttribute("uname") == null){
@@ -30,11 +32,11 @@
         %>
           <% String name; %>
         <form action="LogoutServlet">
-		<input class = "btn" type="submit" value="logout"><br>
+		<button>Logout</button><br>
 		</form>
 		
 		<form action="SearchServlet">
-		<input class = "btn" type="submit" value="My Account">
+		<button>My Account</button>
 		</form>
           <%
 		if(!session.isNew()){

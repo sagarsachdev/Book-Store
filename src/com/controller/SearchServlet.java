@@ -35,14 +35,17 @@ public class SearchServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			HttpSession session = request.getSession();
+			String name = (String)session.getAttribute("uname");
 			DBApplication db = new DBApplication();
 			User u = new User();
-			u.setUname(request.getParameter("uname"));
+			//u.setUname(request.getParameter("uname"));
+			u.setUname(name);
 			List<User> ls = db.getUser(u);
 			Iterator<User> itr = ls.iterator();
 			u = itr.next();
 			session.setAttribute("LoggedUser", u);
 			PrintWriter pw = response.getWriter();
+			response.setContentType("text/html");
 			response.setContentType("text/html");
 			pw.println("<html><head><title>");
 			pw.println("User details");

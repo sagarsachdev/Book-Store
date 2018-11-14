@@ -3,6 +3,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
+<%@ page errorPage="error.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -12,22 +13,19 @@
 <title>All Users</title>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<style type="text/css">
-		body {
-		height: 100%;
-	}
-	</style>
+	<link rel="stylesheet" type="text/css" href="style1.css">
 </head>
 <body>
-<div class="bg" style="padding-left: 220px;">
 <c:if test="${requestScope.message !=null}">
 	NOTE : ${message}
 </c:if>
 <c:if test="${requestScope.usrList !=null and
  not empty requestScope.usrList}">
- <h1 style="padding-left: 300px;">All Users</h1><br>
-<table border="4" cellpadding="3">
+<div class="wrapper" style="background-image: url('images/bg-registration-form-2.jpg');">
+<div class="inner" style="background-image: url('images/bg-registration-form-2.jpg');">
+	<h4 align="center"><a href="Home.jsp">Home</a></h4>
+ <h1 align="center">All Users</h1><br>
+<table align="center" border="4" cellpadding="3">
 	<tr>
 		<td>User Name</td>
 		<td>Email</td>
@@ -48,8 +46,10 @@
 		<td>${e.balance}</td>
 	</tr>
 	</c:forEach>
-</table></c:if>
-
+</table>
+</c:if>
+ </div>
+</div>
 <%--
 <table border="1" cellpadding="3">
 <tr>
@@ -82,6 +82,5 @@ List l=(List)o;
 	}
 %>
  --%>
-</div>
 </body>
 </html>
