@@ -14,6 +14,13 @@ import java.util.List;
 import com.model.Login;
 import com.model.User;
 
+/**
+ * 
+ * This class is used to create the connection to the database and different methods are defined to interact with the database.
+ * 
+ * @author sagarsachdev
+ *
+ */
 public class DBApplication {
 	Connection con;
 	PreparedStatement ps;
@@ -31,6 +38,11 @@ public class DBApplication {
 		return con;
 	}
 	
+	/**
+	 * This method is used for inserting data received from jsp page into table using insert command.
+	 * @param ls  The method accepts List of user(s) which is/are supposed to be inserted into the database.
+	 * @return int  The method returns int value which becomes positive if the query works without any error otherwise returns non-positive value.
+	 */
 	public int saveData(List<User> ls) {
 		int i=0;
 		User u = null;
@@ -64,6 +76,11 @@ public class DBApplication {
 		return i;
 	}
 	
+	/**
+	 * This method is used to retreive all the tuples from the table using select statement.
+	 * @return List  The method returns List of users whose tuple is present in the table in database.
+	 */
+	
 	public List<User> getAllData()
 	{
 		List<User> lst=new LinkedList<User>();
@@ -96,6 +113,13 @@ public class DBApplication {
 		return lst;
 	}
 	
+	/**
+	 * This method is used to verify the details of user which are entered in the jsp page
+	 *  whether those values are present in the table or not.
+	 * @param lst	It accepts the values entered by user on jsp page in list of login object.
+	 * @return boolean	This returns true if the details are correct otherwise false.
+	 */
+	
 	public boolean validateData(List<Login> lst) {
 		myConnection();
 		List<User> ls=getAllData();
@@ -110,6 +134,12 @@ public class DBApplication {
 		}
 		return b;
 	}
+	
+	/**
+	 * This method is used for retreiving details of logged in user from table using search command
+	 * @param u	accepts username and passes it in form of user object which is used for retrieving details from table 
+	 * @return	This returns List of user object which contains all the details of logged in user
+	 */
 	
 	public List<User> getUser(User u){
 		List<User> lst = new ArrayList<User>();
@@ -135,6 +165,12 @@ public class DBApplication {
 		}
 		return lst;	
 	}
+	
+	/**
+	 * This method is used to buy book from given books and deduct money from user's account.
+	 * @param ls	This is List of login object which is used for retrieving details of logged in user in order to deduct balance from user's account.
+	 * @return int	This returns an integer value which signies whether the query successfully worked or not.
+	 */
 	
 	public int buyBook(List<Login> ls) {
 		int j = 0;
